@@ -41,6 +41,8 @@ public class AccountDto {
     private String accountNo;
     private String routingNo;
 
+    private String branchNameLSL;
+
     private Long photoId;
     public static AccountDto form(Account account) {
         AccountDto dto = new AccountDto();
@@ -77,6 +79,15 @@ public class AccountDto {
 
         return dto;
     }
+
+    public String getBranchNameLSL() {
+        return branchNameLSL;
+    }
+
+    public void setBranchNameLSL(String branchNameLSL) {
+        this.branchNameLSL = branchNameLSL;
+    }
+
     public Long getId() {
         return id;
     }

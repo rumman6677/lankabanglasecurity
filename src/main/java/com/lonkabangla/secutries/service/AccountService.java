@@ -11,6 +11,7 @@ import com.lonkabangla.secutries.repository.BankDetailsRepo;
 import org.springframework.stereotype.Service;
 
 import java.sql.ClientInfoStatus;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -61,6 +62,9 @@ public class AccountService {
         account.setClientCode(accountDto.getClientCode());
         account.setLinkCode(accountDto.getLinkCode());
         account.setStatus(Status.REVIEW);
+        LocalDate currentDate = LocalDate.now();
+        account.setYear(currentDate.getYear());
+        account.setBranchNameOflSl(accountDto.getBranchNameLSL());
 
         return account;
     }

@@ -40,6 +40,26 @@ public class Account {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    private int year;
+
+    public String getBranchNameOflSl() {
+        return branchNameOflSl;
+    }
+
+    public void setBranchNameOflSl(String branchNameOflSl) {
+        this.branchNameOflSl = branchNameOflSl;
+    }
+
+    private String branchNameOflSl;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public Status getStatus() {
         return status;
     }

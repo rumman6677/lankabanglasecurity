@@ -35,12 +35,31 @@ public class BOAccount {
     private String mobile;
     private String fax;
     private String email;
+
+    private String branchNameLSL;
     @OneToOne
     @JoinColumn(name = "p_id", referencedColumnName = "id")
     private PassPort passPort;
     @OneToOne
     @JoinColumn(name = "b_id", referencedColumnName = "id")
     private BankAccountDetails bankAccountDetails;
+
+    public String getBranchNameLSL() {
+        return branchNameLSL;
+    }
+
+    public void setBranchNameLSL(String branchNameLSL) {
+        this.branchNameLSL = branchNameLSL;
+    }
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    private int year;
 
     public Long getId() {
         return id;

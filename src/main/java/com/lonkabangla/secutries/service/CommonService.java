@@ -14,16 +14,14 @@ import java.util.Optional;
 public class CommonService {
     private final EFTrepo efTrepo;
 
-    private final CreditFacility creditFacility;
 
     private final POARepo poaRepo;
 
     private final NomineeRepo nomineeRepo;
 
     private final BankDetailsRepo bankDetailsRepo;
-    public CommonService(EFTrepo efTrepo, CreditFacility creditFacility, POARepo poaRepo, NomineeRepo nomineeRepo, BankDetailsRepo bankDetailsRepo) {
+    public CommonService(EFTrepo efTrepo, POARepo poaRepo, NomineeRepo nomineeRepo, BankDetailsRepo bankDetailsRepo) {
         this.efTrepo = efTrepo;
-        this.creditFacility = creditFacility;
         this.poaRepo = poaRepo;
         this.nomineeRepo = nomineeRepo;
         this.bankDetailsRepo = bankDetailsRepo;

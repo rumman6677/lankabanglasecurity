@@ -17,6 +17,8 @@ public class Address {
     private Long id;
     private String address;
     private String city;
+    private String thana;
+    private String division;
     private String postCode;
     private String state;
     private String telephone;
