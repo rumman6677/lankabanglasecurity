@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>Account Num</th>
+            <th>Bo No</th>
+            <th>Client Code</th>
+            <th>Account Holder Name</th>
+            <th>Product Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Use JavaScript to populate the table rows from the API response -->
+    </tbody>
+</table>
+
+<script>
+    // Fetch data from the API endpoint
+    fetch('http://localhost:8080/api/list/all')
+        .then(response => response.json())
+        .then(data => {
+            const tbody = document.querySelector('tbody');
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.accountNum}</td>
+                    <td>${item.boNo}</td>
+                    <td>${item.clientCode}</td>
+                    <td>${item.accountHolderName}</td>
+                    <td>${item.productType}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+    }
+
+    .navbar a:hover {
+      background-color: #555;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropbtn {
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+      right: 0;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .box {
+      flex: 1;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      margin: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a id="Dashboard" href="#admindashboard">Dashboard</a>
+  <a id="AccountRequest" href="#accountRequest">Account Request</a>
+  <a id="BOAccountRequest" href="#Bo">BO</a>
+  <a id="EFTRequest" href="#application">EFT request</a>
+  <a id="CreditFacility" href="#myprofile">Credit Facility</a>
+  <a id="profile" href="#profile">myprofile</a>
+  <a id="logout" href="#logout">Logout</a>
+
+
+  </div>
+</div>
+<!-- <H1 style="position: center;";">Application List</H1> -->
+<div class="main-content">
+    <div class="box" id="customerAccount">Customer Account</div>
+    <div class="box" id="BOAccount">BO Account</div>
+    <div class="box" id="eft">EFT</div>
+    <div class="box" id="CreditFacility">Credit facility</div>
+    <div class="box" id="boID">All Customer</div>
+    <div class="box" id="applicationStatus">Application Status</div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #registration{
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>User Login</h1>
+        <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <input type="submit" value="Login">
+           
+        </form>
+        <button id="registration">Registration</button>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("login-form");
+
+            loginForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const email = loginForm.email.value;
+                const password = loginForm.password.value;
+
+                const url = "http://localhost:8080/api/v1/login";
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                                // Redirect to dashboard or perform other actions
+                                alert("Login successful!");
+                                window.location.href = "dashboard.html";
+                                // window.location.href = "index.html";
+                            }
+                        else {
+                            alert("Error logging in.");
+                        }
+                    }
+                };
+
+                const formData = JSON.stringify({ email, password });
+                xhr.send(formData);
+            });
+        });
+
+        const bo = document.getElementById("registration");
+        bo.addEventListener("click", function() {
+
+        window.location.href = "register.html";
+    });
+    </script>
+</body>
+</html>

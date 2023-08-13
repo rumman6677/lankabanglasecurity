@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Account Details</h1>
+        <table>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td>Account Num</td>
+                <td id="accountNum"></td>
+            </tr>
+            <tr>
+                <td>Bo No</td>
+                <td id="boNo"></td>
+            </tr>
+            <tr>
+                <td>Client Code</td>
+                <td id="clientCode"></td>
+            </tr>
+            <tr>
+                <td>Account Holder Name</td>
+                <td id="accountHolderName"></td>
+            </tr>
+            <tr>
+                <td>Product Type</td>
+                <td id="productType"></td>
+            </tr>
+            <!-- Repeat this pattern for other fields -->
+        </table>
+    </div>
+
+    <script>
+        // Fetch data from the API endpoint
+        fetch('http://localhost:8080/api/2')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('accountNum').textContent = data.accountNum;
+                document.getElementById('boNo').textContent = data.boNo;
+                document.getElementById('clientCode').textContent = data.clientCode;
+                document.getElementById('accountHolderName').textContent = data.accountHolderName;
+                document.getElementById('productType').textContent = data.productType;
+                // Repeat this pattern for other fields
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* Reset default margin and padding for elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a background color for the whole page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 800px; /* Set a max width for the form container */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: grid; /* Use CSS grid for form layout */
+    gap: 10px; /* Gap between grid items */
+}
+
+/* Define a grid layout for the form */
+form label,
+form input,
+form select,
+form textarea {
+    display: flex; /* Use flexbox to align label and input */
+    align-items: center; /* Align vertically */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Adjust some fields to span two columns */
+form .span-two {
+    grid-column: span 2;
+}
+
+/* Style the submit button */
+form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    grid-column: span 2;
+}
+
+/* Flex container for fields that need to go side by side */
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Style for each flex item */
+.flex-item {
+    width: calc(50% - 10px);
+    margin-bottom: 10px;
+}
+
+/* Add space between some fields */
+.flex-item:not(:last-child) {
+    margin-right: 10px;
+}
+/* ... (previous CSS code) */
+
+.input-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-row label {
+    margin-right: 10px;
+}
+
+/* Add some spacing between label and value */
+.input-row input {
+    margin-left: 5px;
+}

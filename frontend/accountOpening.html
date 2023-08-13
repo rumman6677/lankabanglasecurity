@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Account with Image</title>
+    <link rel="stylesheet" href="accountStyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Create Account with Image</h1>
+        <form id="accountForm" enctype="multipart/form-data">
+            <div class="input-row">
+                <label for="accountNum">Account Number:</label>
+                <input type="text" id="accountNum" name="accountNum" >
+            </div>
+            <div class="input-row">
+                <label for="boNo">BO Number:</label>
+                <input type="text" id="boNo" name="boNo" required>
+            </div>
+            <div class="input-row">
+                <label for="productType">Product Type:</label>
+                <input type="text" id="productType" name="productType" required>
+            </div>
+            <div class="input-row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-row">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" required>
+            </div>
+            <div class="input-row">
+                <label for="accountDate">Account Date:</label>
+                <input type="date" id="accountDate" name="accountDate" required>
+            </div>
+            <div class="input-row">
+                <label for="accountType">Account Type:</label>
+                <select id="accountType" name="accountType" required>
+                    <option value="llb">llb</option>
+                    <option value="llb1">llb1</option>
+                    <option value="llb2">llb2S</option>
+                </select>
+            </div>
+            <div class="input-row">
+                <label for="clientCode">Client Code:</label>
+                <input type="text" id="clientCode" name="clientCode" required>
+            </div>
+            <div class="input-row">
+                <label for="linkCode">Link Code:</label>
+                <input type="text" id="linkCode" name="linkCode" required>
+            </div>
+            <div class="flex-container">
+                <!-- Flexbox container for personal details -->
+<div class="flex-container">
+    <div class="flex-item input-row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="fatherName">Father's Name:</label>
+        <input type="text" id="fatherName" name="fatherName" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="motherName">Mother's Name:</label>
+        <input type="text" id="motherName" name="motherName" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="dateOfBirth">Date of Birth:</label>
+        <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="flex-item input-row">
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="prAddress">Permanent Address:</label>
+        <textarea id="prAddress" name="prAddress" rows="3" required></textarea>
+    </div>
+    <div class="flex-item input-row">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="tel">Telephone Number:</label>
+        <input type="tel" id="tel" name="tel" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="pAddress">Present Address:</label>
+        <textarea id="pAddress" name="pAddress" rows="3" required></textarea>
+    </div>
+    <div class="flex-item input-row">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" name="occupation" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="eTin">eTIN:</label>
+        <input type="text" id="eTin" name="eTin" required>
+    </div>
+</div>
+<div class="flex-container">
+    <div class="flex-item input-row">
+        <label for="bankName">Bank Name:</label>
+        <input type="text" id="bankName" name="bankName" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="branchName">Branch Name:</label>
+        <input type="text" id="branchName" name="branchName" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="baccountnumber">Account No:</label>
+        <input type="text" id="baccountnumber" name="baccountnumber" required>
+    </div>
+    <div class="flex-item input-row">
+        <label for="routeNo">Routing No:</label>
+        <input type="text" id="routeNo" name="routeNoS" >
+    </div>
+</div>
+            
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+   <script>
+    const form = document.getElementById("accountForm");
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission
+
+    // Get form data using FormData
+    const formData = new FormData(form);
+
+    // Create a JavaScript object to hold the form data
+    const accountDto = {
+        accountNum: formData.get("accountNum"),
+        boNo: formData.get("boNo"),
+        productType: formData.get("productType"),
+        name: formData.get("name"),
+        contact: formData.get("contact"),
+        accountDate: formData.get("accountDate"),
+        accountType: formData.get("accountType"),
+        clientCode: formData.get("clientCode"),
+        linkCode: formData.get("linkCode"),
+        accountHolderName: formData.get("name"),
+        fatherName: formData.get("fatherName"),
+        motherName: formData.get("motherName"),
+        dateOfBirth: formData.get("dateOfBirth"),
+        gender: formData.get("gender"),
+        nationality: formData.get("nationality"),
+        prAddress: formData.get("prAddress"),
+        phoneNumber: formData.get("phoneNumber"),
+        tel: formData.get("tel"),
+        pAddress: formData.get("pAddress"),
+        email: formData.get("email"),
+        occupation: formData.get("occupation"),
+        eTin: formData.get("eTin"),
+        bankName: formData.get("bankName"),
+        branchName: formData.get("branchName"),
+        accountNo: formData.get("baccountnumber"),
+        routingNo: formData.get("routeNo")
+    };
+
+    // Log the created JavaScript object
+    console.log(accountDto);
+    
+    const url = "http://localhost:8080/api/accounts";
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send(JSON.stringify(accountDto));
+    xhr.onreadystatechange = function() {
+            if (xhr.status === 200) {
+                alert("Form data saved successfully!");
+                window.location.href="/dashboard.html"
+            } else {
+                alert("Error saving form data.");
+            }
+        
+    };
+});
+
+   </script>
+</body>
+</html>
