@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #message {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form id="imageUploadForm" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="file">Select image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required><br>
+        <button type="button" onclick="uploadImage()">Upload</button>
+    </form>
+    <div id="message">
+        <img src="http://localhost:8080/image/1" alt="">
+    </div>
+
+    <script>
+        function uploadImage() {
+            const form = document.getElementById('imageUploadForm');
+            const formData = new FormData(form);
+
+            fetch('http://localhost:8080/upload', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                const message = document.getElementById('message');
+                message.textContent = data;
+                message.style.color = 'green';
+                form.reset();
+            })
+            .catch(error => {
+                const message = document.getElementById('message');
+                message.textContent = 'Error uploading image.';
+                message.style.color = 'red';
+            });
+        }
+    </script>
+</body>
+</html>

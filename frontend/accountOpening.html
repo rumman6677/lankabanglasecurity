@@ -18,7 +18,29 @@
             </div>
             <div class="input-row">
                 <label for="productType">Product Type:</label>
-                <input type="text" id="productType" name="productType" required>
+                <select id="productType" name="productType" required>
+                    <option value="Premium">LBSL Premium</option>
+                    <option value="IPO">LBSL IPO</option>
+                    <option value="Khatungonj">LBSL Halal</option>
+                    <option value="Investment Plan">LBSL Easy Investment Plan</option>
+                    <option value="Beginner">LBSL Beginner</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div class="input-row">
+                <label for="lslbranchName">Branch Name:</label>
+                <select id="lslbranchName" name="lslbranchName" required>
+                    <option value="Principal">Principal Branch</option>
+                    <option value="Chattogram">Chattogram Main Branch</option>
+                    <option value="Khatungonj">Khatungonj Branch</option>
+                    <option value="Banani">Banani Branch</option>
+                    <option value="Nasirabad">Nasirabad Branch</option>
+                    <option value="Uttara">Uttara BranchBanani Branch</option>
+                    <option value="Sylhet">Sylhet Branch</option>
+                    <option value="Dhanmondi">Dhanmondi Branch</option>
+                    <option value="Cumilla">Cumilla Branch</option>
+                    <option value="Narayangonj">Narayangonj Branch</option>
+                </select>
             </div>
             <div class="input-row">
                 <label for="name">Name:</label>
@@ -35,9 +57,8 @@
             <div class="input-row">
                 <label for="accountType">Account Type:</label>
                 <select id="accountType" name="accountType" required>
-                    <option value="llb">llb</option>
-                    <option value="llb1">llb1</option>
-                    <option value="llb2">llb2S</option>
+                    <option value="first">First Account Holder</option>
+                    <option value="joint">Joint Account Holder</option>                    
                 </select>
             </div>
             <div class="input-row">
@@ -127,7 +148,8 @@
     </div>
 </div>
             
-            <button type="submit">Create Account</button>
+<button type="submit">Create Account</button>
+<button id="nextPage" type="submit">Next</button>
         </form>
     </div>
    <script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/AdminDashboard/adStyle.css">
+  <title>Chart Analysis</title>
+</head>
+<body>
+  <nav>
+    <ul class="navbar">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#analysis">Analysis Chart</a></li>
+    </ul>
+  </nav>
+  <div id="container1">
+    <div class="chart-container">
+        <h2>Male Female BO Account</h2>
+        <canvas id="pie-chart" width="300" height="300"></canvas><br>
+    </div>
+    <div class="chart-container">
+        <h2>Account By Division</h2>
+        <canvas id="division-chart" width="300" height="300"></canvas><br>
+    </div>
+</div>
+
+<div id="container2">
+    <div class="chart-container">
+        <h2>Another Pie Chart</h2>
+        <canvas id="another-pie-chart" width="300" height="300"></canvas><br>
+    </div>
+    <div class="chart-container">
+        <h2>Another Division Chart</h2>
+        <canvas id="another-division-chart" width="300" height="300"></canvas><br>
+    </div>
+</div>
+
+
+  <script src="/AdminDashboard/adscript.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>
