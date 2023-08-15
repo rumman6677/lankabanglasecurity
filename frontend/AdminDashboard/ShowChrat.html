@@ -1,43 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/AdminDashboard/adStyle.css">
-  <title>Chart Analysis</title>
+    <title>Pie Chart Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+/* Apply basic styles to charts and chart containers */
+.chart-container {
+    width: 48%; /* Adjust as needed */
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Apply styles for chart rows */
+.chart-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Apply styles for chart title */
+.charttitle {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+    .chart-row {
+        flex-direction: column;
+    }
+}
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                background-color: #333;
+                width: 100%;
+                top: 80px;
+                left: 0;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger {
+                display: block;
+            }
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <ul class="navbar">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#analysis">Analysis Chart</a></li>
+
+<nav class="navbar">
+    <div class="logo"><a href="#">Logo</a></div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
-  </nav>
-  <div id="container1">
-    <div class="chart-container">
-        <h2>Male Female BO Account</h2>
-        <canvas id="pie-chart" width="300" height="300"></canvas><br>
+    <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
     </div>
-    <div class="chart-container">
-        <h2>Account By Division</h2>
-        <canvas id="division-chart" width="300" height="300"></canvas><br>
-    </div>
+</nav>
+<div id="loader" class="loader"></div>
+
+<div class="chart-row">
+  <div class="chart-container">
+      <canvas id="pie-chart"></canvas>
+  </div>
+  <div class="chart-container">
+      <canvas id="division-chart"></canvas>
+  </div>
 </div>
-
-<div id="container2">
-    <div class="chart-container">
-        <h2>Another Pie Chart</h2>
-        <canvas id="another-pie-chart" width="300" height="300"></canvas><br>
-    </div>
-    <div class="chart-container">
-        <h2>Another Division Chart</h2>
-        <canvas id="another-division-chart" width="300" height="300"></canvas><br>
-    </div>
+<div class="chart-row">
+  <div class="chart-container">
+      <canvas id="line-chart"></canvas>
+  </div>
+  <div class="chart-container">
+      <canvas id="userStatusChart"></canvas>
+  </div>
 </div>
-
-
-  <script src="/AdminDashboard/adscript.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<div class="chart-row">
+  <div class="chart-container">
+      <canvas id="branch"></canvas>
+  </div>
+  <div class="chart-container">
+      <canvas id="branchGenderChart"></canvas>
+  </div>
+</div>
+<div class="chart-row">
+  <div class="chart-container">
+      <canvas id="lineChart"></canvas>
+  </div>
+</div>
+<script src="adscript.js"></script>
 </body>
 </html>

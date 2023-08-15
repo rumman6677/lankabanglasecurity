@@ -152,7 +152,7 @@
 <button id="nextPage" type="submit">Next</button>
         </form>
     </div>
-   <script>
+   <!-- <script>
     const form = document.getElementById("accountForm");
 form.addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent form submission
@@ -210,6 +210,53 @@ form.addEventListener("submit", function (event) {
     };
 });
 
-   </script>
+   </script> -->
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const accountForm = document.getElementById("accountForm");
+        const createAccountButton = document.querySelector("#accountForm button[type='submit']");
+        const nextPageButton = document.querySelector("#nextPage");
+
+        createAccountButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            const formData = gatherFormData(accountForm);
+            console.log("Form Data for Creating Account:", formData);
+            const url = "http://localhost:8080/api/accounts";
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.send(JSON.stringify(formData));
+            xhr.onreadystatechange = function() {
+            if (xhr.status === 201) {
+                const response = JSON.parse(xhr.responseText);
+                localStorage.setItem("responseKey", JSON.stringify(response)); // Saving as a string
+                alert("Form data saved successfully!");
+                window.location.href = "/imageUpload.html";
+            } else {
+                alert("Error saving form data.");
+            }
+        
+    }
+});
+
+
+        nextPageButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            const formData = gatherFormData(accountForm);
+            console.log("Form Data for Next Page:", formData);
+            // You can now use the formData object for the next page
+        });
+
+        function gatherFormData(form) {
+            const formData = {};
+            const inputs = form.querySelectorAll("input, select, textarea");
+            inputs.forEach(input => {
+                formData[input.name] = input.value;
+            });
+            return formData;
+        }
+    });
+</script>
 </body>
 </html>

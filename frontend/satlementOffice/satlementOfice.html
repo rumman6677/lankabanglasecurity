@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account List Table</title>
+    <link rel="stylesheet" href="/satlementOffice/satle.css">
+</head>
+<body>
+    <table id="accountTable">
+        <tr>
+            <th>ID</th>
+            <th>Product Type</th>
+            <th>Name</th>
+            <th>Account Type</th>
+            <th>Client Code</th>
+            <th>LSL Branch Name</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        const accountTable = document.getElementById('accountTable');
+
+        fetch('http://localhost:8080/api/list/check/account')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(account => {
+                    const row = accountTable.insertRow();
+                    row.insertCell(0).textContent = account.id;
+                    row.insertCell(1).textContent = account.productType;
+                    row.insertCell(2).textContent = account.name;
+                    row.insertCell(3).textContent = account.accountType;
+                    row.insertCell(4).textContent = account.clientCode;
+                    row.insertCell(5).textContent = account.lslbranchName;
+                    const actionCell = row.insertCell(6);
+                    const button = document.createElement('button');
+                    button.textContent = 'Capture ID';
+                    button.addEventListener('click', () => {
+                        handleButtonClick(account.id);
+                    });
+                    actionCell.appendChild(button);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+
+        function handleButtonClick(id) {
+        console.log('Button clicked for ID:', id);
+        // Redirect to the profile page with the captured ID as a query parameter
+        window.location.href = `profile.html?id=${id}`;
+    }
+    </script>
+</body>
+</html>
