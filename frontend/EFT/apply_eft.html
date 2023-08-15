@@ -117,8 +117,23 @@
       comment: document.getElementById("comment").value
     };
 
-    console.log(formData);
-    // You can perform further actions with the formData object, such as sending it to a server.
+    // Send the data using the fetch API
+    fetch("http://localhost:8080/api/v1/save/eft", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("Data saved:", data);
+      window.location.href='dashboard.html'
+      // You can perform further actions after saving the data
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
   }
 </script>
 

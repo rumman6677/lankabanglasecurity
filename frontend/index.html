@@ -72,6 +72,13 @@
             
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+            <label for="user">User Type</label>
+                <select id="user" name="user" required>
+                    <option value="investor">Investor</option>
+                    <option value="manager">Manager</option>
+                    <option value="satlement">Setalement Officer</option>
+                   
+                </select>
             
             <input type="submit" value="Login">
            
@@ -88,6 +95,7 @@
 
                 const email = loginForm.email.value;
                 const password = loginForm.password.value;
+                const user = loginForm.user.value;
 
                 const url = "http://localhost:8080/api/v1/login";
                 const xhr = new XMLHttpRequest();
@@ -96,10 +104,14 @@
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
-                                // Redirect to dashboard or perform other actions
-                                alert("Login successful!");
+                            if(user == 'investor'){
                                 window.location.href = "dashboard.html";
-                                // window.location.href = "index.html";
+                            }
+                            else if(user == "manager")
+                            window.location.href = "/BranchOffice/branchoffice.html";
+                            }
+                            else if(user == "satlement") {
+                                window.location.href = "/satlementOffice/satlementOfice.html";
                             }
                         else {
                             alert("Error logging in.");

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .flex-item {
+            flex-basis: calc(33.33% - 20px);
+            margin-bottom: 20px;
+        }
+
+        .flex-item label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .flex-item input,
+        .flex-item select,
+        .flex-item textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .flex-item textarea {
+            resize: vertical;
+        }
+
+        .flex-item input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="flex-container">
+        <div class="flex-item input-row">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="fatherName">Father's Name:</label>
+            <input type="text" id="fatherName" name="fatherName" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="motherName">Mother's Name:</label>
+            <input type="text" id="motherName" name="motherName" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="relation">Relationship :</label>
+            <select id="relation" name="relation" required>
+                <option value="father">Father</option>
+                <option value="mother">SMother</option>
+                <option value="son">Son</option>
+                <option value="wife">Wife</option>
+                <option value="daughter">Daughter</option>
+            </select>
+        </div>
+        <div class="flex-item input-row">
+            <label for="dateOfBirth">Date of Birth:</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="flex-item input-row">
+            <label for="nationality">Nationality:</label>
+            <input type="text" id="nationality" name="nationality" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="percentage">Nominee Percentage:</label>
+            <textarea id="percentage" name="percentage" rows="3" required></textarea>
+        </div>
+        <div class="flex-item input-row">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="tel">Telephone Number:</label>
+            <input type="tel" id="tel" name="tel" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="pAddress">Present Address:</label>
+            <textarea id="pAddress" name="pAddress" rows="3" required></textarea>
+        </div>
+        <div class="flex-item input-row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation" required>
+        </div>
+        <div class="flex-item input-row">
+            <label for="eTin">eTIN:</label>
+            <input type="text" id="eTin" name="eTin" required>
+        </div>
+        <button type="submit" id ="image">Go to Upload Image</button>
+    </div>
+</body>
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('responseID');
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const formFields = document.querySelectorAll(".flex-item input, .flex-item select, .flex-item textarea");
+        
+        document.getElementById("image").addEventListener("click", function () {
+            const formData = {};
+
+            formFields.forEach(function (field) {
+                const fieldName = field.name;
+                const fieldValue = field.value;
+
+                formData[fieldName] = fieldValue;
+            });
+
+            // Display the captured data in the console
+            console.log(formData);
+        });
+    });
+</script>
+</html>

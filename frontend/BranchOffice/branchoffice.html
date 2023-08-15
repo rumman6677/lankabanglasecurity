@@ -26,9 +26,77 @@
             border: none;
             cursor: pointer;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                background-color: #333;
+                width: 100%;
+                top: 80px;
+                left: 0;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .burger {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <nav class="navbar">
+        <div class="logo"><a href="#">Logo</a></div>
+        <ul class="nav-links">
+            <li><a href="/BranchOffice/branchoffice.html">Home</a></li>
+            <li><a href="/AdminDashboard/AccountList.html">All Account</a></li>
+            <li><a href="/AdminDashboard/ShowChrat.html">Analysis Chart</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/index.html">Logout</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <h3>Account For Review</h3>
     <table id="accountTable">
         <tr>
             <th>ID</th>
@@ -57,10 +125,10 @@
                     row.insertCell(5).textContent = account.lslbranchName;
                     const actionCell = row.insertCell(6);
                     const button = document.createElement('button');
-                    button.textContent = 'Capture ID';
-                    button.addEventListener('click', () => {
+                    button.textContent = 'View';
+                   button.addEventListener('click', () => {
                         handleButtonClick(account.id);
-                    });
+                    }); 
                     actionCell.appendChild(button);
                 });
             })

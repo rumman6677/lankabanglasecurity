@@ -71,7 +71,7 @@
             <input type="password" id="confirmPassword" name="confirmPassword" required>
             
             <label for="role">Role:</label>
-            <input type="text" id="role" name="role" required>
+            <input type="text" id="role" name="role" disabled>
             
             <input type="submit" value="Register">
         </form>
@@ -100,6 +100,7 @@
                     if (xhr.readyState === 4) {
                         if (xhr.status === 200) {
                             alert("Form data saved successfully!");
+                            window.location.href='/index.html'
                         } else {
                             alert("Error saving form data.");
                         }
