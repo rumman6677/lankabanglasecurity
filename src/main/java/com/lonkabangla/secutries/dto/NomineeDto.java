@@ -12,7 +12,7 @@ public class NomineeDto {
     private String name;
     private String shotName;
     private String nameTitle;
-    private String relationWithNominee;
+    private String relation;
     private String percentage;
 
     private String address;
@@ -64,12 +64,12 @@ public class NomineeDto {
         this.nameTitle = nameTitle;
     }
 
-    public String getRelationWithNominee() {
-        return relationWithNominee;
+    public String getRelation() {
+        return relation;
     }
 
-    public void setRelationWithNominee(String relationWithNominee) {
-        this.relationWithNominee = relationWithNominee;
+    public void setRelation(String relation) {
+        this.relation = relation;
     }
 
     public String getPercentage() {

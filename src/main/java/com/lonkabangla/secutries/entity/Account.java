@@ -37,10 +37,48 @@ public class Account {
     @JoinColumn(name = "p_id",referencedColumnName = "id")
     private ImageEntity photo;
 
+    @OneToOne
+    @JoinColumn(name = "u_id",referencedColumnName = "id")
+    private ImageEntity utilityBill;
+
+    @OneToOne
+    @JoinColumn(name = "nid_id",referencedColumnName = "id")
+    private ImageEntity nid;
+
+    @OneToOne
+    @JoinColumn(name = "e_tin",referencedColumnName = "id")
+    private ImageEntity etin;
+
+
+
     @Enumerated(EnumType.STRING)
     private Status status;
 
     private int year;
+
+    public ImageEntity getUtilityBill() {
+        return utilityBill;
+    }
+
+    public void setUtilityBill(ImageEntity utilityBill) {
+        this.utilityBill = utilityBill;
+    }
+
+    public ImageEntity getNid() {
+        return nid;
+    }
+
+    public void setNid(ImageEntity nid) {
+        this.nid = nid;
+    }
+
+    public ImageEntity getEtin() {
+        return etin;
+    }
+
+    public void setEtin(ImageEntity etin) {
+        this.etin = etin;
+    }
 
     public String getBranchNameOflSl() {
         return branchNameOflSl;

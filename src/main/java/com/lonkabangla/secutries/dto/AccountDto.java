@@ -38,12 +38,13 @@ public class AccountDto {
     private String eTin;
     private String bankName;
     private String branchName;
-    private String accountNo;
-    private String routingNo;
-
-    private String branchNameLSL;
-
+    private String baccountnumber;
+    private String routeNo;
+    private String lslbranchName;
     private Long photoId;
+    private Long nid;
+    private Long uid;
+    private Long etinId;
     public static AccountDto form(Account account) {
         AccountDto dto = new AccountDto();
         dto.setId(account.getId());
@@ -73,19 +74,49 @@ public class AccountDto {
         BankAccountDetails bank = account.getBankAccountDetails();
         dto.setBankName(bank.getBankName());
         dto.setBranchName(bank.getBranchName());
-        dto.setAccountNo(bank.getAccountNo());
-        dto.setRoutingNo(bank.getRoutingNo());
+        dto.setBaccountnumber(bank.getAccountNo());
+        dto.setRouteNo(bank.getRoutingNo());
         dto.setPhotoId(account.getPhoto()==null ? null:account.getPhoto().getId() );
+        dto.setLslbranchName(account.getBranchNameOflSl());
+        dto.setEtinId(account.getEtin()==null ? null:account.getEtin().getId() );
+        dto.setNid(account.getPhoto()==null ? null:account.getNid().getId() );
+        dto.setUid(account.getPhoto()==null ? null:account.getUtilityBill().getId() );
+
 
         return dto;
     }
 
-    public String getBranchNameLSL() {
-        return branchNameLSL;
+    public Long getEtinId() {
+        return etinId;
     }
 
-    public void setBranchNameLSL(String branchNameLSL) {
-        this.branchNameLSL = branchNameLSL;
+    public void setEtinId(Long etinId) {
+        this.etinId = etinId;
+    }
+
+    public Long getNid() {
+        return nid;
+    }
+
+    public void setNid(Long nid) {
+        this.nid = nid;
+    }
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
+
+
+    public String getLslbranchName() {
+        return lslbranchName;
+    }
+
+    public void setLslbranchName(String lslbranchName) {
+        this.lslbranchName = lslbranchName;
     }
 
     public Long getId() {
@@ -296,19 +327,19 @@ public class AccountDto {
         this.branchName = branchName;
     }
 
-    public String getAccountNo() {
-        return accountNo;
+    public String getBaccountnumber() {
+        return baccountnumber;
     }
 
-    public void setAccountNo(String accountNo) {
-        this.accountNo = accountNo;
+    public void setBaccountnumber(String baccountnumber) {
+        this.baccountnumber = baccountnumber;
     }
 
-    public String getRoutingNo() {
-        return routingNo;
+    public String getRouteNo() {
+        return routeNo;
     }
 
-    public void setRoutingNo(String routingNo) {
-        this.routingNo = routingNo;
+    public void setRouteNo(String routeNo) {
+        this.routeNo = routeNo;
     }
 }

@@ -27,8 +27,8 @@ public class AccountController {
     @PostMapping("/accounts")
     public ResponseEntity<?> createAccountWithImage(@RequestBody AccountDto accountDto) {
 
-        accountService.save(accountDto);
-        return new ResponseEntity<>("Save", HttpStatus.CREATED);
+        Account account = accountService.save(accountDto);
+        return new ResponseEntity<>(account.getId(), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -42,4 +42,31 @@ public class AccountController {
     public ResponseEntity<?> getAllAccounts(){
         return new ResponseEntity<>(accountService.findAllAccount(),HttpStatus.OK);
     }
+
+    @GetMapping("/update/status/{id}")
+    public  ResponseEntity<?> updateStatus(@PathVariable Long id) {
+        return new ResponseEntity<>(accountService.updateStatus(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/activatedUser/{id}")
+    public ResponseEntity<?> activedUSer(@PathVariable Long id) {
+        return new ResponseEntity<>(accountService.activedUser(id),HttpStatus.OK);
+    }
+
+    @GetMapping("/active/customer")
+    public ResponseEntity<?> allActiveUser(){
+        return new ResponseEntity<>(accountService.allActiveUser(),HttpStatus.OK);
+    }
+
+
+    @GetMapping("/list/review/account")
+    public ResponseEntity<?> getReviewAccountList(){
+        return new ResponseEntity<>(accountService.getReviewAccountList(),HttpStatus.OK);
+    }
+
+    @GetMapping("/list/check/account")
+    public ResponseEntity<?> getCheckAccountList(){
+        return new ResponseEntity<>(accountService.getCheckAccountList(),HttpStatus.OK);
+    }
+
 }

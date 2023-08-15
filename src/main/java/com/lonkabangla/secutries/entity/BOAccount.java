@@ -1,5 +1,6 @@
 package com.lonkabangla.secutries.entity;
 
+import com.lonkabangla.secutries.Enum.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,6 +44,78 @@ public class BOAccount {
     @OneToOne
     @JoinColumn(name = "b_id", referencedColumnName = "id")
     private BankAccountDetails bankAccountDetails;
+
+    @OneToOne
+    @JoinColumn(name = "n_id", referencedColumnName = "id")
+    private Nominee nominee;
+
+
+    @OneToOne
+    @JoinColumn(name = "photo_id",referencedColumnName = "id")
+    private ImageEntity photo;
+
+    @OneToOne
+    @JoinColumn(name = "u_id",referencedColumnName = "id")
+    private ImageEntity utilityBill;
+
+    @OneToOne
+    @JoinColumn(name = "nid_id",referencedColumnName = "id")
+    private ImageEntity nid;
+
+    @OneToOne
+    @JoinColumn(name = "s_id",referencedColumnName = "id")
+    private ImageEntity signature;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    public Nominee getNominee() {
+        return nominee;
+    }
+
+    public void setNominee(Nominee nominee) {
+        this.nominee = nominee;
+    }
+
+    public ImageEntity getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(ImageEntity photo) {
+        this.photo = photo;
+    }
+
+    public ImageEntity getUtilityBill() {
+        return utilityBill;
+    }
+
+    public void setUtilityBill(ImageEntity utilityBill) {
+        this.utilityBill = utilityBill;
+    }
+
+    public ImageEntity getNid() {
+        return nid;
+    }
+
+    public void setNid(ImageEntity nid) {
+        this.nid = nid;
+    }
+
+    public ImageEntity getSignature() {
+        return signature;
+    }
+
+    public void setSignature(ImageEntity signature) {
+        this.signature = signature;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public String getBranchNameLSL() {
         return branchNameLSL;

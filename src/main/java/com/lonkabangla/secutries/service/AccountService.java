@@ -10,7 +10,6 @@ import com.lonkabangla.secutries.repository.AccountRepository;
 import com.lonkabangla.secutries.repository.BankDetailsRepo;
 import org.springframework.stereotype.Service;
 
-import java.sql.ClientInfoStatus;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +28,7 @@ public class AccountService {
         this.bankDetailsRepo = bankDetailsRepo;
     }
 
-    public void save(AccountDto accountDto) {
+    public Account save(AccountDto accountDto) {
         Account account = prepareAccount(accountDto);
         AccountHolder accountHolder = getAccountHolder(accountDto);
         accountHolderRepo.save(accountHolder);
@@ -37,18 +36,18 @@ public class AccountService {
         BankAccountDetails bankAccountDetails = getBankAccount(accountDto);
         bankDetailsRepo.save(bankAccountDetails);
         account.setBankAccountDetails(bankAccountDetails);
-        accountRepository.save(account);
+        return accountRepository.save(account);
 
     }
 
     private BankAccountDetails getBankAccount(AccountDto accountDto) {
         BankAccountDetails bank = new BankAccountDetails();
-        bank.setAccountNo(accountDto.getAccountNo());
+        bank.setAccountNo(accountDto.getBaccountnumber());
         bank.setBankName(accountDto.getBankName());
         bank.setBranchName(accountDto.getBranchName());
         bank.setBankName(accountDto.getBankName());
-        bank.setRoutingNo(accountDto.getRoutingNo());
-        return  bank;
+        bank.setRoutingNo(accountDto.getRouteNo());
+        return bank;
     }
 
     private Account prepareAccount(AccountDto accountDto) {
@@ -61,10 +60,11 @@ public class AccountService {
         account.setAccountType(accountDto.getAccountType());
         account.setClientCode(accountDto.getClientCode());
         account.setLinkCode(accountDto.getLinkCode());
-        account.setStatus(Status.REVIEW);
+        account.setProductType(accountDto.getProductType());
+        account.setStatus(Status.CHECK);
         LocalDate currentDate = LocalDate.now();
         account.setYear(currentDate.getYear());
-        account.setBranchNameOflSl(accountDto.getBranchNameLSL());
+        account.setBranchNameOflSl(accountDto.getLslbranchName());
 
         return account;
     }
@@ -95,5 +95,46 @@ public class AccountService {
         List<Account> accounts = accountRepository.findAll();
 
         return accounts.stream().map(AccountDto::form).toList();
+    }
+
+    public Long updateStatus(Long id) {
+        Optional<Account> account = accountRepository.findById(id);
+        if (account.isPresent()) {
+            Account newAccount = account.get();
+            newAccount.setStatus(Status.REVIEW);
+            accountRepository.save(newAccount);
+            return account.get().getId();
+        }
+        return null;
+    }
+
+    public List<AccountDto> getReviewAccountList() {
+        List<Account> accountList = accountRepository.findByStatus(Status.REVIEW);
+
+        return accountList.stream().map(AccountDto::form).toList();
+    }
+
+    public List<AccountDto> getCheckAccountList() {
+        List<Account> accountList = accountRepository.findByStatus(Status.CHECK);
+
+        return accountList.stream().map(AccountDto::form).toList();
+    }
+
+    public Long activedUser(Long id) {
+
+        Optional<Account> account = accountRepository.findById(id);
+        if (account.isPresent()) {
+            Account newAccount = account.get();
+            newAccount.setStatus(Status.ACTIVE);
+            accountRepository.save(newAccount);
+            return account.get().getId();
+        }
+        return null;
+    }
+
+    public List<AccountDto> allActiveUser() {
+        List<Account> account = accountRepository.findAll();
+        return account.stream().map(AccountDto::form).toList();
+
     }
 }

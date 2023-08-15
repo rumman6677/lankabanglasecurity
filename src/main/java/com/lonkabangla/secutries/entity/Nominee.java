@@ -1,5 +1,6 @@
 package com.lonkabangla.secutries.entity;
 
+import com.lonkabangla.secutries.Enum.Status;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -33,6 +34,17 @@ public class Nominee {
     @OneToOne
     @JoinColumn(name = "p_id",referencedColumnName = "id")
     private PassPort passPort;
+
+    @OneToOne
+    @JoinColumn(name = "photo_id",referencedColumnName = "id")
+    private ImageEntity photo;
+
+    @OneToOne
+    @JoinColumn(name = "=n_tin",referencedColumnName = "id")
+    private ImageEntity nid;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     private boolean isMinor;
 

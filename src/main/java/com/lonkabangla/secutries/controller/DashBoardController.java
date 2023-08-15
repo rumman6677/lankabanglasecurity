@@ -37,4 +37,35 @@ public class DashBoardController {
         Map<String, Long> divisionMap = dashBoardService.getDivisionCityCounts();
         return ResponseEntity.ok(divisionMap);
     }
+
+    @GetMapping("/userstatus")
+    public ResponseEntity<?> getUserStatus()
+    {
+        Map<String ,Long> userStatus = dashBoardService.getUserStatus();
+
+        return ResponseEntity.ok(userStatus);
+    }
+
+    @GetMapping("/userperbranch")
+    public ResponseEntity<?> userPerbranch()
+    {
+        Map<String ,Long> userStatus = dashBoardService.getUserPerbranch();
+
+        return ResponseEntity.ok(userStatus);
+    }
+
+    @GetMapping("/male/female/perbranch")
+    public ResponseEntity<?> maleAndFemale(){
+        Map<String,Map<String,Long>> maleAndFemale = dashBoardService.getMaleAndFemale();
+
+        return ResponseEntity.ok(maleAndFemale);
+    }
+
+    @GetMapping("/account/peryear")
+    public ResponseEntity<?> accountPeryear(){
+        Map<Integer,Long> maleAndFemale = dashBoardService.accountPeryesr();
+
+        return ResponseEntity.ok(maleAndFemale);
+    }
+
 }
