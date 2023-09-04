@@ -26,6 +26,18 @@ public class Account {
     private String clientCode;
     private String linkCode;
     @ManyToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @ManyToOne
     @JoinColumn(name = "account_holder_id")
     private AccountHolder accountHolder;
 
@@ -36,6 +48,10 @@ public class Account {
     @OneToOne
     @JoinColumn(name = "p_id",referencedColumnName = "id")
     private ImageEntity photo;
+
+    @OneToOne
+    @JoinColumn(name = "si_id",referencedColumnName = "id")
+    private ImageEntity signature;
 
     @OneToOne
     @JoinColumn(name = "u_id",referencedColumnName = "id")
@@ -55,6 +71,14 @@ public class Account {
     private Status status;
 
     private int year;
+
+    public ImageEntity getSignature() {
+        return signature;
+    }
+
+    public void setSignature(ImageEntity signature) {
+        this.signature = signature;
+    }
 
     public ImageEntity getUtilityBill() {
         return utilityBill;

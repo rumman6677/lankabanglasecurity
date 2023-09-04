@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 public class AccountService {
@@ -53,7 +54,6 @@ public class AccountService {
     private Account prepareAccount(AccountDto accountDto) {
         Account account = new Account();
         account.setName(accountDto.getName());
-        account.setBoNo(accountDto.getBoNo());
         account.setName(accountDto.getBoNo());
         account.setContact(accountDto.getContact());
         account.setAccountDate(accountDto.getAccountDate());
@@ -97,11 +97,22 @@ public class AccountService {
         return accounts.stream().map(AccountDto::form).toList();
     }
 
+    public String generateNumber()
+    {
+        Random random = new Random();
+        int min = 10000000;
+        int max = 99999999;
+
+        return String.valueOf(random.nextInt(max - min + 1) + min);
+    }
+
     public Long updateStatus(Long id) {
         Optional<Account> account = accountRepository.findById(id);
         if (account.isPresent()) {
             Account newAccount = account.get();
             newAccount.setStatus(Status.REVIEW);
+            newAccount.setAccountNum(generateNumber());
+            newAccount.setBoNo(generateNumber());
             accountRepository.save(newAccount);
             return account.get().getId();
         }

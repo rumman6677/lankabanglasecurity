@@ -126,6 +126,30 @@ public class ImageController {
             return ResponseEntity.badRequest().body("Error uploading image");
         }
     }
+    @PostMapping("/{id}/upload/signature")
+    public ResponseEntity<String> uploadetinS(@PathVariable Long id,@RequestParam String name, @RequestParam MultipartFile file) {
+        try {
+            Optional<Account> account = accountRepository.findById(id);
+            if(account.isPresent()){
+                ImageEntity image = new ImageEntity();
+                image.setName(name);
+                image.setContentType(file.getContentType());
+                image.setData(file.getBytes());
+
+                ImageEntity imageEntity= imageRepository.save(image);
+
+                Account newAccount = account.get();
+                newAccount.setSignature(imageEntity);
+                accountRepository.save(newAccount);
+                return ResponseEntity.ok("Image uploaded successfully");
+            }
+
+            return ResponseEntity.badRequest().body("Account Not Present uploading image");
+
+        } catch (IOException e) {
+            return ResponseEntity.badRequest().body("Error uploading image");
+        }
+    }
 
 
 

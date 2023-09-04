@@ -45,6 +45,8 @@ public class AccountDto {
     private Long nid;
     private Long uid;
     private Long etinId;
+
+    private Long sId;
     public static AccountDto form(Account account) {
         AccountDto dto = new AccountDto();
         dto.setId(account.getId());
@@ -79,11 +81,20 @@ public class AccountDto {
         dto.setPhotoId(account.getPhoto()==null ? null:account.getPhoto().getId() );
         dto.setLslbranchName(account.getBranchNameOflSl());
         dto.setEtinId(account.getEtin()==null ? null:account.getEtin().getId() );
-        dto.setNid(account.getPhoto()==null ? null:account.getNid().getId() );
-        dto.setUid(account.getPhoto()==null ? null:account.getUtilityBill().getId() );
+        dto.setNid(account.getNid()==null ? null:account.getNid().getId() );
+        dto.setUid(account.getUtilityBill()==null ? null:account.getUtilityBill().getId() );
+        dto.setsId(account.getSignature()==null ? null : account.getSignature().getId());
 
 
         return dto;
+    }
+
+    public Long getsId() {
+        return sId;
+    }
+
+    public void setsId(Long sId) {
+        this.sId = sId;
     }
 
     public Long getEtinId() {
